@@ -11,5 +11,5 @@ $cadena =~ tr/$/&/;
 my @nombres = split('&', $cadena);
 # Muestra en pantalla el array nombres
 foreach my $i (@nombres) {
-    print "$i\n";
+   print "$i\n";
 }
