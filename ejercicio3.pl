@@ -3,7 +3,6 @@ use strict;
 use warnings;
 use LWP::UserAgent ();
 use JSON;
-use Data::Dumper;
 
 my $ua1 = LWP::UserAgent->new();
 my $ua2 = LWP::UserAgent->new();
