@@ -6,8 +6,7 @@ use LWP::UserAgent ();
 use JSON;
 
 # Conexion a DB y endpoints
-my %attr = ( PrintError => 0, RaiseError => 1 );
-my $dbh = DBI->connect( "DBI:mysql:edu_challenge_db", 'edu_challenge_user', '3duc4', \%attr );
+my $dbh = DBI->connect( "DBI:mysql:edu_challenge_db", 'edu_challenge_user', '3duc4');
 my $ua1 = LWP::UserAgent->new();
 my $ua2 = LWP::UserAgent->new();
 $ua1->env_proxy;
