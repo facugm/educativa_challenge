@@ -88,10 +88,7 @@ sub imprimir {
     );
     $stmt->execute();
 
-    $stmt->bind_columns(
-        \$id_usuario,    \$id_curso, \$user_nombre,
-        \$user_apellido, \$curso_nombre
-    );
+    $stmt->bind_columns(\$id_usuario,\$id_curso,\$user_nombre,\$user_apellido,\$curso_nombre);
     print "id_user | id_curso | nombre y apellido usuario  | nombre curso  |\n";
     while ( $stmt->fetch ) {
         print "$id_usuario\t| $id_curso        | $user_nombre $user_apellido \t\t| $curso_nombre\t|\n";
