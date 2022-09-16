@@ -6,12 +6,13 @@ use LWP::UserAgent ();
 use JSON;
 
 # Conexion a DB y endpoints
-my $dbh = DBI->connect( "DBI:mysql:edu_challenge_db", 'edu_challenge_user', '3duc4');
+my $dbh = DBI->connect( "DBI:mysql:edu_challenge_db", 'edu_challenge_user', '3duc4' );
+$dbh->{RaiseError} = 1;
 my $ua1 = LWP::UserAgent->new();
 my $ua2 = LWP::UserAgent->new();
 $ua1->env_proxy;
 $ua2->env_proxy;
-my $response1 =  $ua1->get('http://packages.educativa.com/samples/usuarios.json');
+my $response1 = $ua1->get('http://packages.educativa.com/samples/usuarios.json');
 my $ref1      = decode_json( $response1->decoded_content );
 my $response2 = $ua2->get('http://packages.educativa.com/samples/cursos.json');
 my $ref2      = decode_json( $response2->decoded_content );
@@ -88,9 +89,13 @@ sub imprimir {
     );
     $stmt->execute();
 
-    $stmt->bind_columns(\$id_usuario,\$id_curso,\$user_nombre,\$user_apellido,\$curso_nombre);
+    $stmt->bind_columns(
+        \$id_usuario,    \$id_curso, \$user_nombre,
+        \$user_apellido, \$curso_nombre
+    );
     print "id_user | id_curso | nombre y apellido usuario  | nombre curso  |\n";
     while ( $stmt->fetch ) {
-        print "$id_usuario\t| $id_curso        | $user_nombre $user_apellido \t\t| $curso_nombre\t|\n";
+        print
+"$id_usuario\t| $id_curso        | $user_nombre $user_apellido \t\t| $curso_nombre\t|\n";
     }
 }
