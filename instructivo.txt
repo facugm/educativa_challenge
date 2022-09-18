@@ -1,4 +1,0 @@
-instalaciones
-sudo apt-get install perl
-sudo apt-get install mysql-server
-para instalar modulo DBD:mysql en ej 4: sudo apt-get install libmysqlclient-dev; sudo cpan -f DBD::mysql
